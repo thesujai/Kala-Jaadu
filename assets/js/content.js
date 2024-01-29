@@ -1,4 +1,4 @@
-const endpoint = "http:/127.0.0.1:5500/";
+const endpoint = "http:/127.0.0.1:5000/";
 const descriptions = {
   "Sneaking": "Coerces users to act in ways that they would not normally act by obscuring information.",
   "Urgency": "Places deadlines on things to make them appear more desirable",
