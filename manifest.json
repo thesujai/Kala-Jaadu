@@ -1,11 +1,31 @@
 {
-    "name": "DPB Hackathon",
-    "version": "1.0.0",
-    "description": "Chrome extension for findind Dark Patterns in E-Commerce Site",
     "manifest_version": 3,
-    "author": "Kaala Jadu",
-    "action":{
-        "default_popup": "index.html",
-        "default_title": "Dark Patterns"
-    }
+    "name": "Insite",
+    "version": "1.2",
+    "description": "Recognize dark patterns in online stores",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [{
+        "matches": [
+            "<all_urls>"
+        ],
+        "js": [
+            "./assets/js/common.js",
+            "./assets/js/block_segment.js",
+            "./assets/js/content.js"
+        ],
+        "css": [
+            "./assets/css/insite.css"
+        ],
+        "run_at": "document_end"
+    }],
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ]
 }
