@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Insite",
+    "name": "DPBH",
     "version": "1.2",
-    "description": "Recognize dark patterns in online stores",
+    "description": "Recognize dark patterns in E-Commerce Sites",
     "action": {
         "default_popup": "index.html"
     },
@@ -11,12 +11,12 @@
             "<all_urls>"
         ],
         "js": [
-            "./assets/js/common.js",
-            "./assets/js/block_segment.js",
-            "./assets/js/content.js"
+            "js/common.js",
+            "js/block_segment.js",
+            "js/content.js"
         ],
         "css": [
-            "./assets/css/insite.css"
+            "css/insite.css"
         ],
         "run_at": "document_end"
     }],
