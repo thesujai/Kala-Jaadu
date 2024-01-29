@@ -20,11 +20,13 @@ function scrape() {
   let filtered_elements = [];
 
   for (let i = 0; i < elements.length; i++) {
-    let text = elements[i].innerText.trim().replace(/\t/g, " ");
-    if (text.length == 0) {
-      continue;
+    if (elements[i].innerText != undefined) {
+      let text = elements[i].innerText.trim().replace(/\t/g, " ");
+      if (text.length == 0) {
+        continue;
+      }
+      filtered_elements.push(text);
     }
-    filtered_elements.push(text);
   }
 
   // post to the web server
@@ -41,16 +43,19 @@ function scrape() {
       let element_index = 0;
 
       for (let i = 0; i < elements.length; i++) {
-        let text = elements[i].innerText.trim().replace(/\t/g, " ");
-        if (text.length == 0) {
-          continue;
-        }
+        if (elements[i].innerText != undefined) {
+          let text = elements[i].innerText.trim().replace(/\t/g, " ");
 
-        if (json.result[i] !== "Not Dark") {
-          highlight(elements[element_index], json.result[i]);
-          dp_count++;
+          if (text.length == 0) {
+            continue;
+          }
+
+          if (json.result[i] !== "Not Dark") {
+            highlight(elements[element_index], json.result[i]);
+            dp_count++;
+          }
+          element_index++;
         }
-        element_index++;
       }
 
       // store number of dark patterns
