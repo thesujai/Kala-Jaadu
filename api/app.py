@@ -2,10 +2,10 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from joblib import load
 
-presence_classifier = load('model/yn_class.joblib')
-presence_vect = load('model/yn_vector.joblib')
-category_classifier = load('model/cat_class.joblib')
-category_vect = load('model/cat_vector.joblib')
+presence_classifier = load('../model/yn_class.joblib')
+presence_vect = load('../model/yn_vector.joblib')
+category_classifier = load('../model/cat_class.joblib')
+category_vect = load('../model/cat_vector.joblib')
 
 app = Flask(__name__)
 CORS(app)
