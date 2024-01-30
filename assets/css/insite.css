@@ -1,6 +1,7 @@
 .insite-highlight {
     position: relative;
-    background: #F7E660;
+    background: #ff313162;
+    border: 1px solid red;
 }
 
 .insite-highlight .insite-highlight-body {

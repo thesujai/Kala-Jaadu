@@ -16,7 +16,8 @@ function scrape() {
   }
 
   // aggregate all DOM elements on the page
-  let elements = segments(document.body);
+  let elements = (segments(document.body));
+  // console.log(elements);
   let filtered_elements = [];
 
   for (let i = 0; i < elements.length; i++) {
@@ -50,7 +51,7 @@ function scrape() {
             continue;
           }
 
-          if (json.result[i] !== "Not Dark") {
+          if (json.result[i] != "Not Dark") {
             highlight(elements[element_index], json.result[i]);
             dp_count++;
           }
@@ -74,6 +75,9 @@ function scrape() {
 }
 
 function highlight(element, type) {
+  // if(element){
+
+  // }
   element.classList.add("insite-highlight");
 
   let body = document.createElement("span");
