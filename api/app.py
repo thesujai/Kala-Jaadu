@@ -18,13 +18,13 @@ def main():
 
         for token in data:
             result = presence_classifier.predict(presence_vect.transform([token]))
-            if result == 'Dark':
+            if result == '1':
                 cat = category_classifier.predict(category_vect.transform([token]))
                 output.append(cat[0])
             else:
                 output.append(result[0])
 
-        dark = [data[i] for i in range(len(output)) if output[i] == 'Dark']
+        dark = [data[i] for i in range(len(output)) if output[i] == '1']
         for d in dark:
             print(d)
         print()

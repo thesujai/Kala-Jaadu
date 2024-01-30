@@ -50,7 +50,7 @@ function scrape() {
             continue;
           }
 
-          if (json.result[i] !== "Not Dark") {
+          if (json.result[i] !== 0) {
             highlight(elements[element_index], json.result[i]);
             dp_count++;
           }
