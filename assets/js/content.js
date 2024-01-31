@@ -11,7 +11,7 @@ const descriptions = {
 
 function scrape() {
   // website has already been analyzed
-  if (document.getElementById("insite_count")) {
+  if (document.getElementById("count")) {
     return;
   }
 
@@ -52,8 +52,15 @@ function scrape() {
           }
 
           if (json.result[i] != "Not Dark") {
-            highlight(elements[element_index], json.result[i]);
-            dp_count++;
+            if(json.result[i] !== undefined){
+              highlight(elements[element_index], json.result[i]);
+              console.log(elements[element_index]);
+              console.log(json.result[i]);
+              dp_count++;
+            }
+            else{
+              continue;
+            }
           }
           element_index++;
         }
@@ -61,7 +68,7 @@ function scrape() {
 
       // store number of dark patterns
       let g = document.createElement("div");
-      g.id = "insite_count";
+      g.id = "count";
       g.value = dp_count;
       g.style.opacity = 0;
       g.style.position = "fixed";
@@ -75,13 +82,10 @@ function scrape() {
 }
 
 function highlight(element, type) {
-  // if(element){
-
-  // }
-  element.classList.add("insite-highlight");
+  element.classList.add("highlight");
 
   let body = document.createElement("span");
-  body.classList.add("insite-highlight-body");
+  body.classList.add("highlight-body");
 
   /* header */
   let header = document.createElement("div");
@@ -111,7 +115,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "analyze_site") {
     scrape();
   } else if (request.message === "popup_open") {
-    let element = document.getElementById("insite_count");
+    let element = document.getElementById("count");
     if (element) {
       sendDarkPatterns(element.value);
     }
