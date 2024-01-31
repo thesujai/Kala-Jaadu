@@ -2,7 +2,7 @@ const blockElements = [
     'div', 'section', 'article', 'aside', 'nav',
     'header', 'footer', 'main', 'form', 'fieldset', 'table'
 ];
-const ignoredElements = ['script', 'style', 'noscript', 'br', 'hr'];
+const ignoredElements = ['script', 'style', 'noscript', 'br', 'hr', 'img'];
 
 const winWidth = window.innerWidth;
 const winHeight = window.innerHeight;
@@ -306,6 +306,10 @@ var isShown = function(element) {
         return true;
     }
 
+    if (tagName === 'header') {
+        return false;
+    }
+
     if (tagName === 'input' && element.type.toLowerCase() === 'hidden') {
         return false;
     }
@@ -341,7 +345,7 @@ var isShown = function(element) {
 
 var isInteractable = function(element) {
     function isEnabled(element) {
-        var disabledSupportElements = ['button', 'input', 'optgroup', 'option', 'select', 'textarea'];
+        var disabledSupportElements = ['button', 'input', 'optgroup', 'option', 'select', 'textarea', 'img', 'nav'];
         var tagName = element.tagName.toLowerCase();
 
         if (!disabledSupportElements.includes(tagName)) {
