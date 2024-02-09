@@ -53,11 +53,7 @@ For participation, all team leaders must register for Round 1, by submitting the
 
 The tech stack required to contribute to this project includes:
 
-<img src = "./icons/html5/html5-original.svg" width="35" height="35">
-<img src = "./icons/css3/css3-original.svg" width="35" height="35">
-<img src = "./icons/javascript/javascript-original.svg" width="35" height="35">
-<img src = "./icons/python/python-original.svg" width="35" height="35">
-<img src = "./icons/tailwind/Tailwind_CSS_Logo.svg.png" width="35" height="35">
+<img src = "./icons/html5/html5-original.svg" width="35" height="35"><img src = "./icons/css3/css3-original.svg" width="35" height="35"><img src = "./icons/javascript/javascript-original.svg" width="35" height="35"><img src = "./icons/python/python-original.svg" width="35" height="35"><img src = "./icons/tailwind/Tailwind_CSS_Logo.svg.png" width="35" height="35">
 
 
 ## Getting Started
