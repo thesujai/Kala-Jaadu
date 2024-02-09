@@ -1,4 +1,4 @@
-const endpoint = "http:/127.0.0.1:5000/";
+const endpoint = "http:/127.0.0.1:5500/";
 const descriptions = {
   "Sneaking": "Coerces users to act in ways that they would not normally act by obscuring information.",
   "Urgency": "Places deadlines on things to make them appear more desirable",
@@ -11,13 +11,12 @@ const descriptions = {
 
 function scrape() {
   // website has already been analyzed
-  if (document.getElementById("count")) {
+  if (document.getElementById("insite_count")) {
     return;
   }
 
   // aggregate all DOM elements on the page
-  let elements = (segments(document.body));
-  // console.log(elements);
+  let elements = segments(document.body);
   let filtered_elements = [];
 
   for (let i = 0; i < elements.length; i++) {
@@ -51,16 +50,9 @@ function scrape() {
             continue;
           }
 
-          if (json.result[i] != "Not Dark") {
-            if(json.result[i] !== undefined){
-              highlight(elements[element_index], json.result[i]);
-              console.log(elements[element_index]);
-              console.log(json.result[i]);
-              dp_count++;
-            }
-            else{
-              continue;
-            }
+          if (json.result[i] !== "Not Dark") {
+            highlight(elements[element_index], json.result[i]);
+            dp_count++;
           }
           element_index++;
         }
@@ -68,7 +60,7 @@ function scrape() {
 
       // store number of dark patterns
       let g = document.createElement("div");
-      g.id = "count";
+      g.id = "insite_count";
       g.value = dp_count;
       g.style.opacity = 0;
       g.style.position = "fixed";
@@ -82,10 +74,10 @@ function scrape() {
 }
 
 function highlight(element, type) {
-  element.classList.add("highlight");
+  element.classList.add("insite-highlight");
 
   let body = document.createElement("span");
-  body.classList.add("highlight-body");
+  body.classList.add("insite-highlight-body");
 
   /* header */
   let header = document.createElement("div");
@@ -115,7 +107,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "analyze_site") {
     scrape();
   } else if (request.message === "popup_open") {
-    let element = document.getElementById("count");
+    let element = document.getElementById("insite_count");
     if (element) {
       sendDarkPatterns(element.value);
     }
