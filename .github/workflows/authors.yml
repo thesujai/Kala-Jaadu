@@ -1,18 +1,1 @@
-name: Update Authors
 
-on:
-  pull_request:
-    types: [opened, synchronize]
-
-jobs:
-  update-authors:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Update AUTHORS
-        uses: wow-actions/update-authors@v1.1.4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
