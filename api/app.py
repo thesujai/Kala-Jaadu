@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
 from joblib import load
 
 presence_classifier = load('../model/yn_class.joblib')
@@ -8,10 +7,9 @@ category_classifier = load('../model/cat_class.joblib')
 category_vect = load('../model/cat_vector.joblib')
 
 app = Flask(__name__)
-CORS(app)
 
-@app.route('/', methods=['POST'])
-def main():
+@app.route('/predict', methods=['POST'])
+def predict():
     if request.method == 'POST':
         output = []
         data = request.get_json().get('tokens')
@@ -27,8 +25,6 @@ def main():
         dark = [data[i] for i in range(len(output)) if output[i] == 'Dark']
         for d in dark:
             print(d)
-        print()
-        print(len(dark))
 
         message = '{ \'result\': ' + str(output) + ' }'
         print(message)
@@ -38,4 +34,4 @@ def main():
         return json
 
 if __name__ == '__main__':
-    app.run(threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=5500)
